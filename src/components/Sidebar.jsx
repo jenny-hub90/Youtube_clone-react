@@ -1,8 +1,15 @@
 import { Stack } from '@mui/material';
 import { categories } from '../utils/constants';
+import { useEffect, useState } from 'react';
+import { fetchFormAPI } from '../utils/fetchFormAPI';
+import { ConstructionOutlined } from '@mui/icons-material';
 
-const selectedCategory = 'New';
-const Sidebar = () => (
+
+
+const Sidebar = ({ selectedCategory, setSelectedCategory}) => {
+ 
+
+  return(
     <Stack 
       direction="row"
       sx={{
@@ -14,6 +21,8 @@ const Sidebar = () => (
         {categories.map((category) => (
             <button 
                className="category-btn" 
+               onClick={() => setSelectedCategory
+              (category.name)}
                style = {{
                 background: category.name === 
                 selectedCategory && '#FFF',
@@ -21,11 +30,19 @@ const Sidebar = () => (
                }}
                key={category.name}
             >
-                <span style={{ color: category.name === selectedCategory ? '#E4BE9E' : 'red', marginRight: '15px'}}>{category.icon}</span>
-                <span style={{ opactiy: category.name === selectedCategory ? '1' :'0.8' }}>{category.name}</span>
+                <span style={{ color: category.name === selectedCategory ? '#E4BE9E' : 'red', marginRight: '15px'}}>
+                  {category.icon}
+                </span>
+                <span style={{ opactiy: category.name === selectedCategory ? '1' :'0.8' }}>
+                  {category.name}
+                </span>
             </button>
     ))}
 
   </Stack>
-)
-export default Sidebar
+  )
+}
+ 
+
+
+export default Sidebar;

@@ -27,11 +27,11 @@ a {
 
 .category-btn:hover {
   background-color: #FFFF !important;
-  color: black !important;
+  color: #E4BE9E !important;
 }
 
 .category-btn:hover span{
-  color: black !important;
+  color: #E4BE9E !important;
 }
 
 .react-player {
