@@ -3,7 +3,7 @@ import { Box, Stack, Typography } from "@mui/material";
 
 
 import { fetchFormAPI } from '../utils/fetchFormAPI';
-import {Sidebar, Videos} from './';
+import { Sidebar, Videos } from './';
 
 const Feed = () => {
   const [selectedCategory,setSelectedCategory] = useState("New");
@@ -13,18 +13,18 @@ const Feed = () => {
   //     .then((data) => setVideos(data.items));
   // }, [selectedCategory]);
   const [videos, setVideos] = useState([]);
-  const [data,setData] = useState();
+  const [data,setData] = useState([]);
 
   const fetchData = async (selectedCategory)=>{
    const fetcheddata= await fetchFormAPI(`search?part=snippet&q=${selectedCategory}`)
-    setData(fetcheddata)
+   console.log(fetcheddata)
+    setData(fetcheddata.items)
   }
 
    useEffect(() =>  {
     fetchData(selectedCategory)
   }, [selectedCategory]);
 
-  console.log("this is data", data)
   return (
     <Stack sx={{ flexDirection:{ sx:
     "column", md: "row"}}}>
